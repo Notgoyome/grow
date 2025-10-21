@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjhrgg4mg8gko"]
+
+[ext_resource type="PackedScene" uid="uid://c6vtekyhpn3nv" path="res://entities/managers/map_manager.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c5uct3vxh50xh" path="res://entities/managers/deck/deck_manager.tscn" id="2_0xm2m"]
+
+[node name="Game" type="Node2D"]
+
+[node name="MapManager" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(112, 8)
+map_size = Vector2i(6, 6)
+
+[node name="DeckManager" parent="." instance=ExtResource("2_0xm2m")]

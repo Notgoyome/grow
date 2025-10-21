@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6vtekyhpn3nv"]
+
+[ext_resource type="Script" uid="uid://cmjdn83xm1ekv" path="res://entities/managers/map_manager.gd" id="1_hikml"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hikml"]
+resource_local_to_scene = true
+size = Vector2(95, 95)
+
+[node name="MapManager" type="Node2D"]
+script = ExtResource("1_hikml")
+
+[node name="Preview" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(56, 56)
+shape = SubResource("RectangleShape2D_hikml")
+debug_color = Color(0.8235294, 0.4, 0.050980393, 0.15686275)
