@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq5oyyk3vanpc"]
+
+[ext_resource type="Script" uid="uid://bo8ag2hhdtesl" path="res://entities/flowers/flower.gd" id="1_aar4x"]
+[ext_resource type="SpriteFrames" uid="uid://dqwtik6ctlmp6" path="res://entities/flowers/animation/flower.tres" id="2_aar4x"]
+
+[node name="Flower" type="Node2D"]
+script = ExtResource("1_aar4x")
+
+[node name="Flower" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(8, 8)
+sprite_frames = ExtResource("2_aar4x")
+animation = &"blue"

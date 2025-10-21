@@ -36,8 +36,16 @@ func generate_map():
 				x * (tile_size + spacing),
 				y * (tile_size + spacing)
 			)
+			new_tile.grid_position = Vector2i(x, y)
 			add_child(new_tile)
 			_tiles[x].append(new_tile)
+
+func get_tile_at(grid_position: Vector2i) -> Tile:
+	if grid_position.x < 0 or grid_position.x >= map_size.x:
+		return null
+	if grid_position.y < 0 or grid_position.y >= map_size.y:
+		return null
+	return _tiles[grid_position.x][grid_position.y]
 
 func clear_map():
 	for column in _tiles:
