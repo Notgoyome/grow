@@ -25,6 +25,7 @@ func get_score() -> int:
 
 func crop_flower(delay_time: float = 0.0) -> void:
 	await get_tree().create_timer(delay_time).timeout
+	SoundGlobal.play_grass_sound()
 	animation_player.play("Crop")
 	await animation_player.animation_finished
 	var tween = get_tree().create_tween()

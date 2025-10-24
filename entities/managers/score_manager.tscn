@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cer7grjadhl56"]
+[gd_scene load_steps=4 format=3 uid="uid://cer7grjadhl56"]
 
 [ext_resource type="Script" uid="uid://dn811prvyt0no" path="res://entities/managers/score_manager.gd" id="1_hkpwx"]
+[ext_resource type="Shader" uid="uid://7gwe218cf6pg" path="res://entities/managers/win_state_manager.gdshader" id="2_b6p3a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dub56"]
+shader = ExtResource("2_b6p3a")
 
 [node name="ScoreManager" type="Node"]
 script = ExtResource("1_hkpwx")
@@ -13,6 +17,7 @@ offset_bottom = 120.0
 
 [node name="ScoreLabel" type="Label" parent="Score"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_dub56")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

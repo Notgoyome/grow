@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://xqrsdlsqel5y"]
+[gd_scene load_steps=13 format=3 uid="uid://xqrsdlsqel5y"]
 
 [ext_resource type="Script" uid="uid://khdbmpt57dwr" path="res://entities/tiles/tile.gd" id="1_pv3p7"]
 [ext_resource type="Texture2D" uid="uid://dycic0axpnap6" path="res://assets/spritesheet/main_spritesheet.png" id="2_xulnm"]
@@ -55,6 +55,90 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_xulnm"]
+resource_name = "animate_label"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.32, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, -1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.62, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.29252622, 0.6692908, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.28717452, 1.7411013, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7x6ep"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7x6ep"]
+_data = {
+&"RESET": SubResource("Animation_7x6ep"),
+&"animate_label": SubResource("Animation_xulnm")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pv3p7"]
 size = Vector2(16, 17)
 
@@ -66,9 +150,23 @@ unique_name_in_owner = true
 position = Vector2(8, 9)
 sprite_frames = SubResource("SpriteFrames_kjj1o")
 
-[node name="Node2D" type="Node2D" parent="Sprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+unique_name_in_owner = true
+root_node = NodePath("../Display/AnimationDisplay")
+libraries = {
+&"": SubResource("AnimationLibrary_7x6ep")
+}
+speed_scale = 5.0
 
-[node name="MultiplierLabel" type="Label" parent="Sprite2D/Node2D"]
+[node name="Display" type="Node2D" parent="Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(0, -1)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimationDisplay" type="Node2D" parent="Sprite2D/Display"]
+unique_name_in_owner = true
+
+[node name="MultiplierLabel" type="Label" parent="Sprite2D/Display/AnimationDisplay"]
 unique_name_in_owner = true
 modulate = Color(0.55, 0.24493335, 0.19800001, 1)
 anchors_preset = 8

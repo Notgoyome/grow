@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjeta35e80gm8"]
+
+[ext_resource type="AudioStream" uid="uid://bxxxakbj5evk" path="res://assets/Audio Waveform.wav" id="1_52yxs"]
+[ext_resource type="Script" uid="uid://cwocm4yoydppx" path="res://globals/sound_global.gd" id="1_ecwun"]
+
+[node name="SoundGlobal" type="Node2D"]
+script = ExtResource("1_ecwun")
+
+[node name="Grass" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("1_52yxs")
+pitch_scale = 2.0
+max_polyphony = 3

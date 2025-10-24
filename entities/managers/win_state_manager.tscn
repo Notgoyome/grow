@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://vrcxkstk808l"]
+[gd_scene load_steps=4 format=3 uid="uid://vrcxkstk808l"]
 
 [ext_resource type="Script" uid="uid://cfy50x1j87nxw" path="res://entities/managers/win_state_manager.gd" id="1_wlpsj"]
+[ext_resource type="Shader" uid="uid://7gwe218cf6pg" path="res://entities/managers/win_state_manager.gdshader" id="2_02mps"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7luvn"]
+shader = ExtResource("2_02mps")
 
 [node name="WinStateManager" type="Node2D"]
 script = ExtResource("1_wlpsj")
@@ -21,15 +25,18 @@ text = "You lost"
 
 [node name="Score" type="Label" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_7luvn")
 offset_left = 16.0
 offset_top = 48.0
 offset_right = 59.0
 offset_bottom = 71.0
 theme_override_font_sizes/font_size = 8
-text = "Score"
+text = "Bonjour je suis un français"
+vertical_alignment = 1
 
 [node name="Round" type="Label" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_7luvn")
 offset_left = 16.0
 offset_top = 80.0
 offset_right = 56.0
@@ -39,6 +46,7 @@ text = "Round"
 
 [node name="HandsRemaining" type="Label" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_7luvn")
 offset_left = 16.0
 offset_top = 128.0
 offset_right = 56.0

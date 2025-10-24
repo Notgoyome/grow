@@ -21,6 +21,7 @@ GameGlobal="*res://globals/game_global.gd"
 Enum="*res://globals/enum.gd"
 SignalBus="*res://globals/signal_bus.gd"
 Global="*res://globals/global.gd"
+SoundGlobal="*res://globals/sound_global.tscn"
 
 [display]
 

@@ -35,7 +35,7 @@ func _on_skill_used(_skill: Skill):
 
 
 func _increase_score():
-    score_to_next_round += score_to_next_round * 1.05 + 10
+    score_to_next_round += score_to_next_round * 1.20 + 10
     score.text = "Score to next round: %d" % score_to_next_round
 
 func check_win_state() -> bool:
