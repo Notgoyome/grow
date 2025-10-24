@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjhrgg4mg8gko"]
+[gd_scene load_steps=11 format=3 uid="uid://bjhrgg4mg8gko"]
 
 [ext_resource type="Script" uid="uid://bxbl6544xujoh" path="res://entities/managers/game.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c6vtekyhpn3nv" path="res://entities/managers/map_manager.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://c5uct3vxh50xh" path="res://entities/managers/deck/deck_manager.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cer7grjadhl56" path="res://entities/managers/score_manager.tscn" id="2_5vw27"]
 [ext_resource type="Script" uid="uid://d13l1j3ew2ibr" path="res://UI/ingame/deck_ui.gd" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cwqg3gbf7mvfq" path="res://entities/managers/player_actions_manager.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://c8qui18jqoqvu" path="res://entities/managers/player_actions_manager.gd" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://cagb6w3k70lfu" path="res://entities/player/player_data.gd" id="7_5vw27"]
-[ext_resource type="Script" uid="uid://ct4byqvp4ta5e" path="res://UI/ingame/score/flower_score.gd" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://vrcxkstk808l" path="res://entities/managers/win_state_manager.tscn" id="9_kek77"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
 script = ExtResource("7_5vw27")
@@ -16,55 +17,24 @@ metadata/_custom_type_script = "uid://cagb6w3k70lfu"
 [node name="Game" type="Node2D"]
 script = ExtResource("1_h2yge")
 
+[node name="ScoreManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_5vw27")]
+player = NodePath("../Player")
+
 [node name="MapManager" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(112, 8)
+position = Vector2(144, 8)
 map_size = Vector2i(6, 6)
 
 [node name="DeckUI" type="Node2D" parent="." node_paths=PackedStringArray("deck_manager")]
-position = Vector2(232, 8)
+position = Vector2(272, 8)
 script = ExtResource("3_7mycd")
 deck_manager = NodePath("../DeckManager")
 
 [node name="DeckManager" parent="." instance=ExtResource("2_0xm2m")]
+hand_size = 2
 
 [node name="Player" parent="." node_paths=PackedStringArray("deck_manager") instance=ExtResource("4_1bvp3")]
 script = ExtResource("5_lquwl")
 deck_manager = NodePath("../DeckManager")
 player_data = SubResource("Resource_5vw27")
 
-[node name="Score" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 88.0
-offset_bottom = 120.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Score"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="FlowerScore" type="Label" parent="Score/VBoxContainer"]
-layout_mode = 2
-text = "R: "
-script = ExtResource("7_272bh")
-
-[node name="FlowerScore2" type="Label" parent="Score/VBoxContainer"]
-layout_mode = 2
-text = "R: "
-script = ExtResource("7_272bh")
-flower_type = "blue"
-
-[node name="FlowerScore3" type="Label" parent="Score/VBoxContainer"]
-layout_mode = 2
-text = "R: "
-script = ExtResource("7_272bh")
-flower_type = "yellow"
-
-[node name="FlowerScore4" type="Label" parent="Score/VBoxContainer"]
-layout_mode = 2
-text = "R: "
-script = ExtResource("7_272bh")
-flower_type = "white"
+[node name="WinStateManager" parent="." instance=ExtResource("9_kek77")]

@@ -1,11 +1,59 @@
-[gd_scene load_steps=5 format=3 uid="uid://xqrsdlsqel5y"]
+[gd_scene load_steps=10 format=3 uid="uid://xqrsdlsqel5y"]
 
 [ext_resource type="Script" uid="uid://khdbmpt57dwr" path="res://entities/tiles/tile.gd" id="1_pv3p7"]
 [ext_resource type="Texture2D" uid="uid://dycic0axpnap6" path="res://assets/spritesheet/main_spritesheet.png" id="2_xulnm"]
+[ext_resource type="PackedScene" uid="uid://cflaeekm5kinq" path="res://entities/tiles/tile_indicator.tscn" id="3_xulnm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xulnm"]
 atlas = ExtResource("2_xulnm")
 region = Rect2(16, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x6ep"]
+atlas = ExtResource("2_xulnm")
+region = Rect2(32, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbqhq"]
+atlas = ExtResource("2_xulnm")
+region = Rect2(48, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv3p7"]
+atlas = ExtResource("2_xulnm")
+region = Rect2(0, 0, 16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kjj1o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xulnm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x6ep")
+}],
+"loop": true,
+"name": &"disabled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbqhq")
+}],
+"loop": true,
+"name": &"grass",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pv3p7")
+}],
+"loop": true,
+"name": &"multiply",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pv3p7"]
 size = Vector2(16, 17)
@@ -13,9 +61,34 @@ size = Vector2(16, 17)
 [node name="Tile" type="Node2D"]
 script = ExtResource("1_pv3p7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(8, 9)
-texture = SubResource("AtlasTexture_h2yge")
+sprite_frames = SubResource("SpriteFrames_kjj1o")
+
+[node name="Node2D" type="Node2D" parent="Sprite2D"]
+
+[node name="MultiplierLabel" type="Label" parent="Sprite2D/Node2D"]
+unique_name_in_owner = true
+modulate = Color(0.55, 0.24493335, 0.19800001, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -9.0
+offset_right = 24.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TileIndicator" parent="." instance=ExtResource("3_xulnm")]
+unique_name_in_owner = true
 
 [node name="ClickArea" type="Area2D" parent="."]
 
@@ -25,3 +98,4 @@ shape = SubResource("RectangleShape2D_pv3p7")
 debug_color = Color(0, 11.708403, 13.469126, 0)
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
+[connection signal="mouse_entered" from="ClickArea" to="TileIndicator" method="_on_click_area_mouse_entered"]

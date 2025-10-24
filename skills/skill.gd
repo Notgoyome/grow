@@ -8,3 +8,4 @@ class_name Skill
 @abstract func use(tile_target: Tile) -> bool
 @abstract func can_use(tile_target: Tile) -> bool
 @abstract func setup_icon_ui(icon_ui: Node)
+@abstract func get_range() -> Array[Vector2i]

@@ -12,7 +12,10 @@ class_name DeckManager
 ]
 @export var hand_size: int = 5
 
-var selected_skill: Skill = null
+var selected_skill: Skill = null:
+	set(value):
+		selected_skill = value
+		GameGlobal.selected_skill = value
 signal on_hand_changed()
 signal on_hand_erased(skill: Skill)
 signal on_hand_appended(skill: Skill)
@@ -40,15 +43,17 @@ func select_skill(skill_ui: Node):
 func consume_skill(skill: Skill, tile: Tile = null):
 	if skill == null:
 		return
+	if !skill in hand:
+		return
 	if (not skill.use(tile)):
 		return
-	if skill in hand:
-		hand.erase(skill)
-		on_hand_erased.emit(skill)
-		discard_pile.append(skill)
-		selected_skill = null
-		draw_card()
-		print_d()
+	SignalBus.on_skill_used.emit(skill)
+	hand.erase(skill)
+	on_hand_erased.emit(skill)
+	discard_pile.append(skill)
+	selected_skill = null
+	draw_card()
+	print_d()
 
 func on_tile_clicked(tile: Tile, event: InputEvent):
 	if hand.size() == 0:

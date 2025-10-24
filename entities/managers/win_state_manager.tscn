@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://vrcxkstk808l"]
+
+[ext_resource type="Script" uid="uid://cfy50x1j87nxw" path="res://entities/managers/win_state_manager.gd" id="1_wlpsj"]
+
+[node name="WinStateManager" type="Node2D"]
+script = ExtResource("1_wlpsj")
+
+[node name="YouLose" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 144.0
+offset_top = 72.0
+offset_right = 175.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "You lost"
+
+[node name="Score" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 59.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 8
+text = "Score"
+
+[node name="Round" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 56.0
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 8
+text = "Round"
+
+[node name="HandsRemaining" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 16.0
+offset_top = 128.0
+offset_right = 56.0
+offset_bottom = 177.0
+theme_override_font_sizes/font_size = 8
+text = "hands
+"

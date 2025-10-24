@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cflaeekm5kinq"]
+
+[ext_resource type="Script" uid="uid://cft2ojqtn25ad" path="res://entities/tiles/tile_indicator.gd" id="1_n1v4j"]
+[ext_resource type="Texture2D" uid="uid://dycic0axpnap6" path="res://assets/spritesheet/main_spritesheet.png" id="2_4eiuy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjj1o"]
+atlas = ExtResource("2_4eiuy")
+region = Rect2(80, 0, 16, 18)
+
+[node name="TileIndicator" type="Node2D"]
+script = ExtResource("1_n1v4j")
+
+[node name="IndicatorDisplay" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.5372549)
+position = Vector2(8, 8)
+texture = SubResource("AtlasTexture_kjj1o")

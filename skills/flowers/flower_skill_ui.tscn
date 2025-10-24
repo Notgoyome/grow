@@ -22,6 +22,7 @@ texture = SubResource("AtlasTexture_3bsh4")
 
 [node name="Flower" type="AnimatedSprite2D" parent="Display"]
 unique_name_in_owner = true
+rotation = 0.7853982
 sprite_frames = ExtResource("3_ub3kt")
 animation = &"blue"
 

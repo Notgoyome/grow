@@ -8,5 +8,6 @@
 script = ExtResource("2_gyxnf")
 flower_instance = ExtResource("1_grkmb")
 flower_type = "white"
+area_zone = 1
 IconUI = ExtResource("1_gyxnf")
 metadata/_custom_type_script = "uid://jeormvb0chbo"
